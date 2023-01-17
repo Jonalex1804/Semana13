@@ -1,36 +1,26 @@
 #include <stdio.h>
 
-int main() {
+int main(){
 
-    FILE* archivo = NULL;
-    char buffer[100];
-    double pi;
+    FILE *archivo=NULL;
+    FILE *archivo2=NULL;
 
-    archivo = fopen("archivo.txt", "w");
+    archivo=fopen("vector.txt","r+");
+    archivo2=fopen("vectormultiplicación,txt","w");
 
-    if (archivo == NULL) {
+    int a,b;
+    
+    if (archivo==NULL){
         printf("No se puede abrir el archivo");
         return -1;
     }
 
-    fgets(buffer, 100, archivo);
-    printf("la primera línea es %s", buffer);
-
-    fgets(buffer, 100, archivo);
-    printf("la segunda línea es %s", buffer);
-
-    fgets(buffer, 100, archivo);
-    printf("la tercera línea es %s", buffer);
-
-    fscanf(archivo, "%lf", &pi);
-    fprintf("el número en la cuarta línea es %lf", pi);
-
-    fprintf(archivo, "\n");
-
-    fputs("se agrega una quinta línea", archivo);
-
-    fclose(archivo);
-
-
-    return 0;
+    for(int i=0; i<100; i++){
+        fscanf(archivo,"%d",&a);
+        b=a*3;
+        fprintf(archivo2,"%d\n",b);
+    }
+     fclose(archivo);
+     fclose(archivo2);
+     return 0;
 }
